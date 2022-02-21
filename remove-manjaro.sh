@@ -10,6 +10,6 @@ CHROOT='/data/chrootmanjaro'
 
 ./unmount-manjarotest.sh || true
 
-echo "Deleting alpine rootfs"
+echo "Deleting manjaro rootfs"
 rm -rf $CHROOT
 echo "Done"

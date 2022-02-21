@@ -9,4 +9,4 @@ chroot "${CHROOT}" pacman -S --noconfirm nodejs
 chroot "${CHROOT}" pacman -S --noconfirm git
 chroot "${CHROOT}" pacman -S --noconfirm base-devel
 chroot "${CHROOT}" pacman -S --noconfirm sudo
-chroot "${CHROOT}" pacman -S --noconfirm yay
+chroot "${CHROOT}" pacman -S --noconfirm yarn
