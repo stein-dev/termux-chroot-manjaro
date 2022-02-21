@@ -65,7 +65,7 @@ export PULSE_SERVER=127.0.0.1
 export MOZ_FAKE_NO_SANDBOX=1
 " > $CHROOT/etc/profile.d/termux-proot.sh
 
-cat <<- EOF | sudo unshare -mpf bash -e -
+cat <<- EOF
 chroot "${CHROOT}" pacman-key --init
 chroot "${CHROOT}" pacman-key --populate manjaro
 chroot "${CHROOT}" pacman-key --populate archlinuxarm
