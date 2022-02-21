@@ -5,6 +5,6 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-CHROOT='/data/manjarotest'
+CHROOT='/data/chrootmanjaro'
 
-busybox chroot $CHROOT /bin/sh --login
+busybox chroot $CHROOT /bin/bash --login
