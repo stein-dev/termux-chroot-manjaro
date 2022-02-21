@@ -65,15 +65,7 @@ export PULSE_SERVER=127.0.0.1
 export MOZ_FAKE_NO_SANDBOX=1
 " > $CHROOT/etc/profile.d/termux-proot.sh
 
-cat <<- EOF
-chroot "${CHROOT}" pacman-key --init
-chroot "${CHROOT}" pacman-key --populate manjaro
-chroot "${CHROOT}" pacman-key --populate archlinuxarm
-chroot "${CHROOT}" pacman-key --populate archlinux
-chroot "${CHROOT}" pacman-mirrors -c poland
-chroot "${CHROOT}" pacman -Syu --noconfirm
-chroot "${CHROOT}" pacman -S --noconfirm util-linux
-EOF
+
 
 # sed "/export ANDROID_DATA=\"\/data\"/d" -i "$CHROOT/etc/profile"
 # echo "export ANDROID_DATA=\"/data\"" >> "$CHROOT/etc/profile"
