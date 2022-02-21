@@ -6,7 +6,7 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-CHROOT='/data/manjarotest'
+CHROOT='/data/chrootmanjaro'
 
 echo "Unmounting $CHROOT/proc"
 busybox umount "$CHROOT/proc"

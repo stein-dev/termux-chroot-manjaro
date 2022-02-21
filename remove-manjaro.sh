@@ -6,9 +6,9 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-CHROOT='/data/manjarotest'
+CHROOT='/data/chrootmanjaro'
 
-./unmount-alpine.sh || true
+./unmount-manjarotest.sh || true
 
 echo "Deleting alpine rootfs"
 rm -rf $CHROOT

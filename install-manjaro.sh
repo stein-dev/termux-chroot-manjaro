@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # PARAMETERS ---
-CHROOT='/data/manjarotest'
+CHROOT='/data/chrootmanjaro'
 DNS1='1.1.1.1'
 DNS2='1.0.0.1'
 
@@ -18,8 +18,9 @@ cd $CHROOT
 
 echo "Downloading alpine rootfs"
 
-busybox wget "https://osdn.net/projects/manjaro-arm/storage/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz" -O rootfs.tar.gz
-
+#busybox wget "https://osdn.net/projects/manjaro-arm/storage/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz" -O rootfs.tar.gz
+busybox wget "https://mirrors.gigenet.com/OSDN//storage/g/m/ma/manjaro-arm/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz" -O rootfs.tar.gz
+#curl --fail --location --output rootfs.tar.gz "https://osdn.net/projects/manjaro-arm/storage/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz"
 
 echo "Extracting rootfs"
 busybox tar -xf rootfs.tar.gz
@@ -63,6 +64,16 @@ export TMPDIR=/tmp
 export PULSE_SERVER=127.0.0.1
 export MOZ_FAKE_NO_SANDBOX=1
 " > $CHROOT/etc/profile.d/termux-proot.sh
+
+cat <<- EOF | sudo unshare -mpf bash -e -
+chroot "${CHROOT}" pacman-key --init
+chroot "${CHROOT}" pacman-key --populate manjaro
+chroot "${CHROOT}" pacman-key --populate archlinuxarm
+chroot "${CHROOT}" pacman-key --populate archlinux
+chroot "${CHROOT}" pacman-mirrors -c poland
+chroot "${CHROOT}" pacman -Syu --noconfirm
+chroot "${CHROOT}" pacman -S --noconfirm util-linux
+EOF
 
 # sed "/export ANDROID_DATA=\"\/data\"/d" -i "$CHROOT/etc/profile"
 # echo "export ANDROID_DATA=\"/data\"" >> "$CHROOT/etc/profile"
