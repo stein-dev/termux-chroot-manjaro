@@ -1,3 +1,5 @@
+#!/system/bin/sh
+
 CHROOT='/data/chrootmanjaro'
 
 sed -i '/^CheckSpace$/s/^/#/' ${CHROOT}/etc/pacman.conf 
