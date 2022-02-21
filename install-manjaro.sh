@@ -19,7 +19,7 @@ cd $CHROOT
 echo "Downloading alpine rootfs"
 
 #busybox wget "https://osdn.net/projects/manjaro-arm/storage/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz" -O rootfs.tar.gz
-busybox wget "https://mirrors.gigenet.com/OSDN//storage/g/m/ma/manjaro-arm/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz" -O rootfs.tar.gz
+busybox wget --no-check-certificate "https://mirrors.gigenet.com/OSDN//storage/g/m/ma/manjaro-arm/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz" -O rootfs.tar.gz
 #curl --fail --location --output rootfs.tar.gz "https://osdn.net/projects/manjaro-arm/storage/.rootfs/Manjaro-ARM-aarch64-latest.tar.gz"
 
 echo "Extracting rootfs"
